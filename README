@@ -1,0 +1,47 @@
+§  Installation instructions
+
+assert.rb is a module to implment in a class:
+
+    require_relative "assert"
+    class Test
+        include Assert
+    end
+
+§  What it does
+
+assert.rb is a module with a function called identical? it will compare two complex data type for equality and
+provide to STDERR the dot notation of where in the complex data type fails if it does fail.
+
+§  How to use it
+
+after implementing the module in a class you can access the function by:
+    x = Test.new
+    x.identical?(1,1)
+
+§  How to run the unit tests
+
+you can run the test.rb file using the command line with ruby:
+> ruby ./test.rb
+
+§  Examples
+you can pass in any kind of complex data type to the identical? method:
+    x = Test.new
+    x.identical?(1,1) == true
+    x.identical?([], []) == true
+
+§  Detailed list of features
+    ability to compare basic data types
+    ability to compare complex data types of Nth depth tree of hash or array
+    STDERR of when failures occur to retrace step
+
+
+§  Finally, add a section that describes your approach, future enhancements and compromises made.
+
+Knowing one of the requirements of this task was to provide dot notation of the complex object I spent a lot
+of time researching ways to acquire this notation from an object. However, after researching the API and Ruby
+docs I came to the conclusion there was no simple way to output the my localized path from a complex object.
+So I instead decided to build the dot notation as I recursively traversed the data structure.
+
+future enhancments: figure out a way to not use global variables.
+
+compromises made: had to use a global variable.
